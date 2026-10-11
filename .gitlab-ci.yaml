@@ -1,0 +1,13 @@
+stages:              # фазы пайплайна по порядку
+  - build
+  - test
+
+my-job:
+  stage: test                 # к какой фазе относится
+  image: python:3.14          # docker-образ, в котором выполняется
+  rules: # КОГДА job запускать
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+  script:                     # команды по порядку (как steps в GH)
+    - pip install -r requirements.txt
+    - playwright install --with-deps chromium
+    - pytest
