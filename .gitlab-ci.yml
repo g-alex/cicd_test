@@ -16,7 +16,6 @@ task3:
     - pip install -r requirements.txt
     - playwright install --with-deps chromium
     - pytest tests/test_dz3.py::test_open_page --junitxml=report.xml
-    -
   artifacts: # что сохранить после прогона
     paths:
       - reports/
