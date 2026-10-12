@@ -9,7 +9,6 @@ my-job:
     - playwright install --with-deps chromium
     - pytest
 
-
 task3:
   rules:
     - when: manual
@@ -18,8 +17,8 @@ task3:
   script: #  команды по порядку (как steps в GH)
     - pip install -r requirements.txt
     - playwright install --with-deps chromium
-    - pytest tests/test_dz3.py::test_open_page --junitxml=report.xml
+    - pytest tests/test_dz3.py::test_open_page --junitxml=reports/report.xml
   artifacts: # что сохранить после прогона
     paths:
-      - reports/
+      - reports/report.xml
     expire_in: 1 day
