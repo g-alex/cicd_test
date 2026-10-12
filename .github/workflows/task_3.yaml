@@ -16,7 +16,7 @@ jobs:
       - name: install dependencies
         run: pip install -r requirements.txt && playwright install --with-deps chromium
       - name: start
-        run: pytest tests/test_dz3.py::test_open_page_test --junitxml=report.xml
+        run: pytest tests/test_dz3.py::test_open_page --junitxml=report.xml
 
       - name: Store test results
         uses: actions/upload-artifact@v4
