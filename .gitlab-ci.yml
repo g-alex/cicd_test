@@ -9,7 +9,10 @@ my-job:
     - playwright install --with-deps chromium
     - pytest
 
+
 task3:
+  rules:
+    - when: manual
   stage: test                 # к какой фазе относится
   image: python:3.14          # docker-образ, в котором выполняется
   script: #  команды по порядку (как steps в GH)
