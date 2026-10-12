@@ -1,3 +1,4 @@
+name: task 3
 on: workflow_dispatch
 
 jobs:
@@ -15,4 +16,11 @@ jobs:
       - name: install dependencies
         run: pip install -r requirements.txt && playwright install --with-deps chromium
       - name: start
-        run: pytest tests/test_dz3.py::test_open_page_test
+        run: pytest tests/test_dz3.py::test_open_page_test --junitxml=report.xml
+
+      - name: Store test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results      # имя артефакта
+          path: report.xml        # что упаковать (файл или папка)
+          retention-days: 1       # сколько хранить
