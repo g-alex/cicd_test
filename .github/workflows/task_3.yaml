@@ -1,0 +1,18 @@
+on: workflow_dispatch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14' # Укажите нужную версию Python
+
+      - name: install dependencies
+        run: pip install -r requirements.txt && playwright install --with-deps chromium
+      - name: start
+        run: pytest tests/test_dz3.py::test_open_page_test
